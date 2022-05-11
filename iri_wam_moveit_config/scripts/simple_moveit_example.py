@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Usage:
 # rosrun iri_wam_moveit_config simple_moveit_example.py
@@ -45,11 +45,11 @@ initial_pose.acceleration = 0.5
 
 if __name__ == "__main__":
 
-  print "======= Init Simple MoveIt Example"
+  print("======= Init Simple MoveIt Example")
   moveit_commander.roscpp_initialize(sys.argv)
   rospy.init_node('iri_simple_moveit_example', anonymous=True)
 
-  print "======= Connecting Node with MoveIt"
+  print("======= Connecting Node with MoveIt")
   sys.stdout.flush()
   robot = moveit_commander.RobotCommander()
   scene = moveit_commander.PlanningSceneInterface()
@@ -79,6 +79,6 @@ if __name__ == "__main__":
   # Go To Initial Pose
   common.plan_and_move_in_joints(group, home_pose)
 
-  print "======= THE END"
+  print("======= THE END")
   sys.stdout.flush()
   moveit_commander.os._exit(0)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys 
 import csv 
@@ -18,40 +18,40 @@ DEBUG = True
 def plan_and_move_in_joints(group, jm_request):
   group.clear_pose_targets()
   if DEBUG:
-    print "======= Current Joint values: %s" % group.get_current_joint_values()
-    print "======= Requested Joint values: %s" % jm_request.positions
+    print("======= Current Joint values: %s" % group.get_current_joint_values())
+    print("======= Requested Joint values: %s" % jm_request.positions)
     sys.stdout.flush()
   group.set_joint_value_target(jm_request.positions)
   plan = group.plan()
   if plan.joint_trajectory.points:
-    print "======= Executing trajectory plan..."
+    print("======= Executing trajectory plan...")
     sys.stdout.flush()
     group.go(wait=True)
     return True
   else:
-    print "======= Planning NOT Possible"
+    print("======= Planning NOT Possible")
     sys.stdout.flush()
     return False
 
 def plan_and_move_in_cartesians(group, pose_st):
   group.clear_pose_targets()
   if DEBUG:
-    print "======= From frame: %s" % group.get_planning_frame()
-    print "======= To frame: %s" % group.get_end_effector_link()
-  print "======= Generating plan"
+    print("======= From frame: %s" % group.get_planning_frame())
+    print("======= To frame: %s" % group.get_end_effector_link())
+  print("======= Generating plan")
   sys.stdout.flush()
   group.set_pose_target(pose_st)
   plan = group.plan()
   if plan.joint_trajectory.points:
-    print "======= Executing plan"
+    print("======= Executing plan")
     sys.stdout.flush()
     #group.go(wait=True)
     group.execute(plan)
     #wait_in_secs(2)
-    print "======= Plan Executed"
+    print("======= Plan Executed")
     return True
   else:
-    print "======= Plan NOT Possible"
+    print("======= Plan NOT Possible")
     sys.stdout.flush()
     return False
 
