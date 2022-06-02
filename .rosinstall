@@ -2,5 +2,5 @@
 # Used with wstool, users can download source of all packages of MoveIt!.
 - git:
     local-name: baxter_common
-    uri: https://github.com/RethinkRobotics/baxter_common.git
-    version: kinetic-devel
+    uri: https://github.com/UCB-ISG/baxter_common.git
+    version: ucb-noetic
